@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "foreigner", "~> 1.6.1"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
@@ -32,14 +34,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+group :test do
+  gem "rspec-rails", "~> 2.14.1"
+  gem "capybara", "~> 2.2.1"
+end
