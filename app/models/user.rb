@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
   validates :occupation, presence: true
   validates :role,       presence: true
   validates :first_name, uniqueness: { scope: [:last_name, :occupation] }
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

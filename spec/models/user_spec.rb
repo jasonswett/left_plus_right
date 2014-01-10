@@ -41,4 +41,10 @@ describe User do
 
     it { should_not be_valid }
   end
+
+  describe "#full_name" do
+    it "is the first name and last name together" do
+      expect(@user.full_name).to eq("#{@user.first_name} #{@user.last_name}")
+    end
+  end
 end
