@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140110154831) do
+ActiveRecord::Schema.define(version: 20140110160444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,5 +23,19 @@ ActiveRecord::Schema.define(version: 20140110154831) do
   end
 
   add_index "role", ["name"], name: "index_role_on_name", unique: true, using: :btree
+
+  create_table "user", force: true do |t|
+    t.string   "first_name", default: "", null: false
+    t.string   "last_name",  default: "", null: false
+    t.string   "occupation", default: "", null: false
+    t.integer  "role_id",                 null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user", ["first_name", "last_name", "occupation"], name: "index_user_on_first_name_and_last_name_and_occupation", unique: true, using: :btree
+  add_index "user", ["role_id"], name: "index_user_on_role_id", using: :btree
+
+  add_foreign_key "user", "role", name: "user_role_id_fk"
 
 end
